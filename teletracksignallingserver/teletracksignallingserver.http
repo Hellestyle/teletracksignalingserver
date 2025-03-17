@@ -1,0 +1,6 @@
+@teletracksignallingserver_HostAddress = http://localhost:5091
+
+GET {{teletracksignallingserver_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
