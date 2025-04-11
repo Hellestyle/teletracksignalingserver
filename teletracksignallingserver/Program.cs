@@ -48,7 +48,7 @@ async Task HandleWebSocketSignaling(WebSocket webSocket)
             };
             var message = JsonSerializer.Deserialize<Message>(messageJson, options);
             //Console.WriteLine("message: ", message);
-            //Console.WriteLine("ConnectedClients list: ",connectedClients);
+            //Console.WriteLine("ConnectedClients list: ", connectedClients);
             //foreach (var client in connectedClients)
             //{
             //    Console.WriteLine($"websocket: {client.WebSocket}, roomID: {client.RoomID}");
@@ -73,8 +73,8 @@ async Task HandleWebSocketSignaling(WebSocket webSocket)
                     {
                         if (result.MessageType == WebSocketMessageType.Close)
                         {
-                            //connectedClients.Remove(self_connection);
-                            //await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing", CancellationToken.None);
+                            connectedClients.Remove(self_connection);
+                            await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing", CancellationToken.None);
                             return;
                             //await webSocket.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "Closed in server by the clinet", CancellationToken.None);
                         }
@@ -95,7 +95,7 @@ async Task HandleWebSocketSignaling(WebSocket webSocket)
     }
     finally
     {
-        //connectedClients.Remove(self_connection);
+        connectedClients.Remove(self_connection);
         await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing", CancellationToken.None);
     }
 
