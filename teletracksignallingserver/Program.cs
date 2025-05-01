@@ -7,7 +7,7 @@ using System.Threading.Tasks.Dataflow;
 
 
 
-const int BufferSize = 1024 * 4;
+const int BufferSize = 1024 * 8;
 
 List<ClientConnection> connectedClients = [];
 
